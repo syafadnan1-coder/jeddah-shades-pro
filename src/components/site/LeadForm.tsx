@@ -14,8 +14,14 @@ export function LeadForm({ defaultService }: { defaultService?: string }) {
     const fd = new FormData(form);
     const name = String(fd.get("name") ?? "").trim();
     const phone = String(fd.get("phone") ?? "").trim();
-    if (name.length < 2) return toast.error("الرجاء إدخال الاسم");
-    if (!/^[0-9+\s-]{9,15}$/.test(phone)) return toast.error("الرجاء إدخال رقم جوال صحيح");
+    if (name.length < 2) {
+      toast.error("الرجاء إدخال الاسم");
+      return;
+    }
+    if (!/^[0-9+\s-]{9,15}$/.test(phone)) {
+      toast.error("الرجاء إدخال رقم جوال صحيح");
+      return;
+    }
 
     setLoading(true);
     const { error } = await supabase.from("leads").insert({

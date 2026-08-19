@@ -10,33 +10,189 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CarShadesJeddahRouteImport } from './routes/car-shades-jeddah'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as OurWorkRouteImport } from './routes/our-work'
+import { Route as PergolasJeddahRouteImport } from './routes/pergolas-jeddah'
+import { Route as RoyalTentsJeddahRouteImport } from './routes/royal-tents-jeddah'
+import { Route as SandwichPanelJeddahRouteImport } from './routes/sandwich-panel-jeddah'
+import { Route as ScreensJeddahRouteImport } from './routes/screens-jeddah'
+import { Route as WarehousesJeddahRouteImport } from './routes/warehouses-jeddah'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarShadesJeddahRoute = CarShadesJeddahRouteImport.update({
+  id: '/car-shades-jeddah',
+  path: '/car-shades-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurWorkRoute = OurWorkRouteImport.update({
+  id: '/our-work',
+  path: '/our-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PergolasJeddahRoute = PergolasJeddahRouteImport.update({
+  id: '/pergolas-jeddah',
+  path: '/pergolas-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoyalTentsJeddahRoute = RoyalTentsJeddahRouteImport.update({
+  id: '/royal-tents-jeddah',
+  path: '/royal-tents-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SandwichPanelJeddahRoute = SandwichPanelJeddahRouteImport.update({
+  id: '/sandwich-panel-jeddah',
+  path: '/sandwich-panel-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScreensJeddahRoute = ScreensJeddahRouteImport.update({
+  id: '/screens-jeddah',
+  path: '/screens-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarehousesJeddahRoute = WarehousesJeddahRouteImport.update({
+  id: '/warehouses-jeddah',
+  path: '/warehouses-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/contact': typeof ContactRoute
+  '/our-work': typeof OurWorkRoute
+  '/pergolas-jeddah': typeof PergolasJeddahRoute
+  '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
+  '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
+  '/screens-jeddah': typeof ScreensJeddahRoute
+  '/warehouses-jeddah': typeof WarehousesJeddahRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/contact': typeof ContactRoute
+  '/our-work': typeof OurWorkRoute
+  '/pergolas-jeddah': typeof PergolasJeddahRoute
+  '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
+  '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
+  '/screens-jeddah': typeof ScreensJeddahRoute
+  '/warehouses-jeddah': typeof WarehousesJeddahRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/contact': typeof ContactRoute
+  '/our-work': typeof OurWorkRoute
+  '/pergolas-jeddah': typeof PergolasJeddahRoute
+  '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
+  '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
+  '/screens-jeddah': typeof ScreensJeddahRoute
+  '/warehouses-jeddah': typeof WarehousesJeddahRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/car-shades-jeddah'
+    | '/contact'
+    | '/our-work'
+    | '/pergolas-jeddah'
+    | '/royal-tents-jeddah'
+    | '/sandwich-panel-jeddah'
+    | '/screens-jeddah'
+    | '/warehouses-jeddah'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/car-shades-jeddah'
+    | '/contact'
+    | '/our-work'
+    | '/pergolas-jeddah'
+    | '/royal-tents-jeddah'
+    | '/sandwich-panel-jeddah'
+    | '/screens-jeddah'
+    | '/warehouses-jeddah'
+    | '/blog/$slug'
+    | '/blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/car-shades-jeddah'
+    | '/contact'
+    | '/our-work'
+    | '/pergolas-jeddah'
+    | '/royal-tents-jeddah'
+    | '/sandwich-panel-jeddah'
+    | '/screens-jeddah'
+    | '/warehouses-jeddah'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRouteWithChildren
+  CarShadesJeddahRoute: typeof CarShadesJeddahRoute
+  ContactRoute: typeof ContactRoute
+  OurWorkRoute: typeof OurWorkRoute
+  PergolasJeddahRoute: typeof PergolasJeddahRoute
+  RoyalTentsJeddahRoute: typeof RoyalTentsJeddahRoute
+  SandwichPanelJeddahRoute: typeof SandwichPanelJeddahRoute
+  ScreensJeddahRoute: typeof ScreensJeddahRoute
+  WarehousesJeddahRoute: typeof WarehousesJeddahRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +204,117 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/car-shades-jeddah': {
+      id: '/car-shades-jeddah'
+      path: '/car-shades-jeddah'
+      fullPath: '/car-shades-jeddah'
+      preLoaderRoute: typeof CarShadesJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-work': {
+      id: '/our-work'
+      path: '/our-work'
+      fullPath: '/our-work'
+      preLoaderRoute: typeof OurWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pergolas-jeddah': {
+      id: '/pergolas-jeddah'
+      path: '/pergolas-jeddah'
+      fullPath: '/pergolas-jeddah'
+      preLoaderRoute: typeof PergolasJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/royal-tents-jeddah': {
+      id: '/royal-tents-jeddah'
+      path: '/royal-tents-jeddah'
+      fullPath: '/royal-tents-jeddah'
+      preLoaderRoute: typeof RoyalTentsJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sandwich-panel-jeddah': {
+      id: '/sandwich-panel-jeddah'
+      path: '/sandwich-panel-jeddah'
+      fullPath: '/sandwich-panel-jeddah'
+      preLoaderRoute: typeof SandwichPanelJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/screens-jeddah': {
+      id: '/screens-jeddah'
+      path: '/screens-jeddah'
+      fullPath: '/screens-jeddah'
+      preLoaderRoute: typeof ScreensJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/warehouses-jeddah': {
+      id: '/warehouses-jeddah'
+      path: '/warehouses-jeddah'
+      fullPath: '/warehouses-jeddah'
+      preLoaderRoute: typeof WarehousesJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BlogRoute: BlogRouteWithChildren,
+  CarShadesJeddahRoute: CarShadesJeddahRoute,
+  ContactRoute: ContactRoute,
+  OurWorkRoute: OurWorkRoute,
+  PergolasJeddahRoute: PergolasJeddahRoute,
+  RoyalTentsJeddahRoute: RoyalTentsJeddahRoute,
+  SandwichPanelJeddahRoute: SandwichPanelJeddahRoute,
+  ScreensJeddahRoute: ScreensJeddahRoute,
+  WarehousesJeddahRoute: WarehousesJeddahRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
