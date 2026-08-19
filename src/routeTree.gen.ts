@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as CarShadesJeddahRouteImport } from './routes/car-shades-jeddah'
+import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as PergolasJeddahRouteImport } from './routes/pergolas-jeddah'
 import { Route as RoyalTentsJeddahRouteImport } from './routes/royal-tents-jeddah'
 import { Route as SandwichPanelJeddahRouteImport } from './routes/sandwich-panel-jeddah'
@@ -22,9 +24,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CarShadesJeddahRoute = CarShadesJeddahRouteImport.update({
   id: '/car-shades-jeddah',
   path: '/car-shades-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurWorkRoute = OurWorkRouteImport.update({
+  id: '/our-work',
+  path: '/our-work',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PergolasJeddahRoute = PergolasJeddahRouteImport.update({
@@ -55,7 +67,9 @@ const WarehousesJeddahRoute = WarehousesJeddahRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/our-work': typeof OurWorkRoute
   '/pergolas-jeddah': typeof PergolasJeddahRoute
   '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
   '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
@@ -64,7 +78,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/our-work': typeof OurWorkRoute
   '/pergolas-jeddah': typeof PergolasJeddahRoute
   '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
   '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
@@ -74,7 +90,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/our-work': typeof OurWorkRoute
   '/pergolas-jeddah': typeof PergolasJeddahRoute
   '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
   '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
@@ -85,7 +103,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/car-shades-jeddah'
+    | '/our-work'
     | '/pergolas-jeddah'
     | '/royal-tents-jeddah'
     | '/sandwich-panel-jeddah'
@@ -94,7 +114,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/car-shades-jeddah'
+    | '/our-work'
     | '/pergolas-jeddah'
     | '/royal-tents-jeddah'
     | '/sandwich-panel-jeddah'
@@ -103,7 +125,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/car-shades-jeddah'
+    | '/our-work'
     | '/pergolas-jeddah'
     | '/royal-tents-jeddah'
     | '/sandwich-panel-jeddah'
@@ -113,7 +137,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   CarShadesJeddahRoute: typeof CarShadesJeddahRoute
+  OurWorkRoute: typeof OurWorkRoute
   PergolasJeddahRoute: typeof PergolasJeddahRoute
   RoyalTentsJeddahRoute: typeof RoyalTentsJeddahRoute
   SandwichPanelJeddahRoute: typeof SandwichPanelJeddahRoute
@@ -130,11 +156,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/car-shades-jeddah': {
       id: '/car-shades-jeddah'
       path: '/car-shades-jeddah'
       fullPath: '/car-shades-jeddah'
       preLoaderRoute: typeof CarShadesJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-work': {
+      id: '/our-work'
+      path: '/our-work'
+      fullPath: '/our-work'
+      preLoaderRoute: typeof OurWorkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pergolas-jeddah': {
@@ -177,7 +217,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   CarShadesJeddahRoute: CarShadesJeddahRoute,
+  OurWorkRoute: OurWorkRoute,
   PergolasJeddahRoute: PergolasJeddahRoute,
   RoyalTentsJeddahRoute: RoyalTentsJeddahRoute,
   SandwichPanelJeddahRoute: SandwichPanelJeddahRoute,
