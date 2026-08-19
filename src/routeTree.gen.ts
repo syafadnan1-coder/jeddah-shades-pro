@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CarShadesJeddahRouteImport } from './routes/car-shades-jeddah'
+import { Route as PergolasJeddahRouteImport } from './routes/pergolas-jeddah'
+import { Route as RoyalTentsJeddahRouteImport } from './routes/royal-tents-jeddah'
+import { Route as SandwichPanelJeddahRouteImport } from './routes/sandwich-panel-jeddah'
+import { Route as ScreensJeddahRouteImport } from './routes/screens-jeddah'
+import { Route as WarehousesJeddahRouteImport } from './routes/warehouses-jeddah'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CarShadesJeddahRoute = CarShadesJeddahRouteImport.update({
+  id: '/car-shades-jeddah',
+  path: '/car-shades-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PergolasJeddahRoute = PergolasJeddahRouteImport.update({
+  id: '/pergolas-jeddah',
+  path: '/pergolas-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoyalTentsJeddahRoute = RoyalTentsJeddahRouteImport.update({
+  id: '/royal-tents-jeddah',
+  path: '/royal-tents-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SandwichPanelJeddahRoute = SandwichPanelJeddahRouteImport.update({
+  id: '/sandwich-panel-jeddah',
+  path: '/sandwich-panel-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScreensJeddahRoute = ScreensJeddahRouteImport.update({
+  id: '/screens-jeddah',
+  path: '/screens-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarehousesJeddahRoute = WarehousesJeddahRouteImport.update({
+  id: '/warehouses-jeddah',
+  path: '/warehouses-jeddah',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/pergolas-jeddah': typeof PergolasJeddahRoute
+  '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
+  '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
+  '/screens-jeddah': typeof ScreensJeddahRoute
+  '/warehouses-jeddah': typeof WarehousesJeddahRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/pergolas-jeddah': typeof PergolasJeddahRoute
+  '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
+  '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
+  '/screens-jeddah': typeof ScreensJeddahRoute
+  '/warehouses-jeddah': typeof WarehousesJeddahRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/car-shades-jeddah': typeof CarShadesJeddahRoute
+  '/pergolas-jeddah': typeof PergolasJeddahRoute
+  '/royal-tents-jeddah': typeof RoyalTentsJeddahRoute
+  '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
+  '/screens-jeddah': typeof ScreensJeddahRoute
+  '/warehouses-jeddah': typeof WarehousesJeddahRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/car-shades-jeddah'
+    | '/pergolas-jeddah'
+    | '/royal-tents-jeddah'
+    | '/sandwich-panel-jeddah'
+    | '/screens-jeddah'
+    | '/warehouses-jeddah'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/car-shades-jeddah'
+    | '/pergolas-jeddah'
+    | '/royal-tents-jeddah'
+    | '/sandwich-panel-jeddah'
+    | '/screens-jeddah'
+    | '/warehouses-jeddah'
+  id:
+    | '__root__'
+    | '/'
+    | '/car-shades-jeddah'
+    | '/pergolas-jeddah'
+    | '/royal-tents-jeddah'
+    | '/sandwich-panel-jeddah'
+    | '/screens-jeddah'
+    | '/warehouses-jeddah'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CarShadesJeddahRoute: typeof CarShadesJeddahRoute
+  PergolasJeddahRoute: typeof PergolasJeddahRoute
+  RoyalTentsJeddahRoute: typeof RoyalTentsJeddahRoute
+  SandwichPanelJeddahRoute: typeof SandwichPanelJeddahRoute
+  ScreensJeddahRoute: typeof ScreensJeddahRoute
+  WarehousesJeddahRoute: typeof WarehousesJeddahRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/car-shades-jeddah': {
+      id: '/car-shades-jeddah'
+      path: '/car-shades-jeddah'
+      fullPath: '/car-shades-jeddah'
+      preLoaderRoute: typeof CarShadesJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pergolas-jeddah': {
+      id: '/pergolas-jeddah'
+      path: '/pergolas-jeddah'
+      fullPath: '/pergolas-jeddah'
+      preLoaderRoute: typeof PergolasJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/royal-tents-jeddah': {
+      id: '/royal-tents-jeddah'
+      path: '/royal-tents-jeddah'
+      fullPath: '/royal-tents-jeddah'
+      preLoaderRoute: typeof RoyalTentsJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sandwich-panel-jeddah': {
+      id: '/sandwich-panel-jeddah'
+      path: '/sandwich-panel-jeddah'
+      fullPath: '/sandwich-panel-jeddah'
+      preLoaderRoute: typeof SandwichPanelJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/screens-jeddah': {
+      id: '/screens-jeddah'
+      path: '/screens-jeddah'
+      fullPath: '/screens-jeddah'
+      preLoaderRoute: typeof ScreensJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/warehouses-jeddah': {
+      id: '/warehouses-jeddah'
+      path: '/warehouses-jeddah'
+      fullPath: '/warehouses-jeddah'
+      preLoaderRoute: typeof WarehousesJeddahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CarShadesJeddahRoute: CarShadesJeddahRoute,
+  PergolasJeddahRoute: PergolasJeddahRoute,
+  RoyalTentsJeddahRoute: RoyalTentsJeddahRoute,
+  SandwichPanelJeddahRoute: SandwichPanelJeddahRoute,
+  ScreensJeddahRoute: ScreensJeddahRoute,
+  WarehousesJeddahRoute: WarehousesJeddahRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
