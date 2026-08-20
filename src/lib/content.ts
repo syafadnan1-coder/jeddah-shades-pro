@@ -8,17 +8,8 @@ import hero from "@/assets/hero-car-shades-jeddah.jpg";
 
 export const HERO_IMAGE = hero;
 
-export type ServiceHref =
-  | "/car-shades-jeddah"
-  | "/royal-tents-jeddah"
-  | "/pergolas-jeddah"
-  | "/screens-jeddah"
-  | "/warehouses-jeddah"
-  | "/sandwich-panel-jeddah";
-
 export type ServiceContent = {
   slug: string;
-  href: ServiceHref;
   name: string;
   h1: string;
   title: string;
@@ -50,7 +41,6 @@ const STEPS = [
 export const SERVICES_CONTENT: ServiceContent[] = [
   {
     slug: "car-shades-jeddah",
-    href: "/car-shades-jeddah",
     name: "مظلات سيارات",
     h1: "مظلات سيارات في جدة",
     title: "مظلات سيارات جدة | تركيب وتصميم مظلات مواقف | الخبراء التظليل",
@@ -73,7 +63,6 @@ export const SERVICES_CONTENT: ServiceContent[] = [
   },
   {
     slug: "royal-tents-jeddah",
-    href: "/royal-tents-jeddah",
     name: "بيوت شعر ملكي",
     h1: "بيوت شعر ملكي وخيام فاخرة في جدة",
     title: "بيوت شعر ملكي جدة | خيام ومجالس عربية فاخرة | الخبراء التظليل",
@@ -96,7 +85,6 @@ export const SERVICES_CONTENT: ServiceContent[] = [
   },
   {
     slug: "pergolas-jeddah",
-    href: "/pergolas-jeddah",
     name: "برجولات حدائق",
     h1: "برجولات حدائق في جدة",
     title: "برجولات جدة | برجولات خشبية ومعدنية للحدائق والمداخل | الخبراء التظليل",
@@ -119,7 +107,6 @@ export const SERVICES_CONTENT: ServiceContent[] = [
   },
   {
     slug: "screens-jeddah",
-    href: "/screens-jeddah",
     name: "سواتر منازل",
     h1: "سواتر منازل في جدة",
     title: "سواتر جدة | سواتر خصوصية للأسطح والأحواش والحدائق | الخبراء التظليل",
@@ -142,7 +129,6 @@ export const SERVICES_CONTENT: ServiceContent[] = [
   },
   {
     slug: "warehouses-jeddah",
-    href: "/warehouses-jeddah",
     name: "هناجر ومستودعات",
     h1: "هناجر ومستودعات في جدة",
     title: "هناجر ومستودعات جدة | تصنيع وتركيب هناجر صناعية | الخبراء التظليل",
@@ -165,7 +151,6 @@ export const SERVICES_CONTENT: ServiceContent[] = [
   },
   {
     slug: "sandwich-panel-jeddah",
-    href: "/sandwich-panel-jeddah",
     name: "سندوتش بانل",
     h1: "سندوتش بانل في جدة",
     title: "سندوتش بانل جدة | ألواح عزل للغرف والمكاتب والمستودعات | الخبراء التظليل",

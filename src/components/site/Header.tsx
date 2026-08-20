@@ -5,8 +5,8 @@ import { SITE, telHref } from "@/lib/site";
 import { SERVICES_CONTENT } from "@/lib/content";
 
 const links = [
-  { label: "الرئيسية", href: "/" as const },
-  ...SERVICES_CONTENT.map((s) => ({ label: s.name, href: s.href })),
+  { label: "الرئيسية", href: "/" },
+  ...SERVICES_CONTENT.map((s) => ({ label: s.name, href: `/${s.slug}` })),
   { label: "أعمالنا", href: "/our-work" },
   { label: "من نحن", href: "/about" },
   { label: "المدونة", href: "/blog" },
