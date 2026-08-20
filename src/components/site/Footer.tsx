@@ -36,7 +36,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm">
             {SERVICES_CONTENT.map((s) => (
               <li key={s.slug}>
-                <Link to={`/${s.slug}`} className="text-primary-foreground/85 transition hover:text-primary-foreground">
+                <Link to={s.href} className="text-primary-foreground/85 transition hover:text-primary-foreground">
                   {s.name} في جدة
                 </Link>
               </li>
