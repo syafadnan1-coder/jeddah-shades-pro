@@ -33,7 +33,7 @@ export function ServicesGrid({ currentSlug }: { currentSlug?: string }) {
       {items.map((s) => (
         <Link
           key={s.slug}
-          to={`/${s.slug}`}
+          to={`/${s.slug}` as "/car-shades-jeddah"}
           className="card-soft group overflow-hidden transition hover:shadow-lift"
         >
           <img
