@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CarShadesJeddahRouteImport } from './routes/car-shades-jeddah'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -20,6 +22,7 @@ import { Route as RoyalTentsJeddahRouteImport } from './routes/royal-tents-jedda
 import { Route as SandwichPanelJeddahRouteImport } from './routes/sandwich-panel-jeddah'
 import { Route as ScreensJeddahRouteImport } from './routes/screens-jeddah'
 import { Route as WarehousesJeddahRouteImport } from './routes/warehouses-jeddah'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -28,9 +31,18 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -78,6 +90,11 @@ const WarehousesJeddahRoute = WarehousesJeddahRouteImport.update({
   path: '/warehouses-jeddah',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -92,6 +109,7 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/car-shades-jeddah': typeof CarShadesJeddahRoute
   '/contact': typeof ContactRoute
@@ -101,12 +119,14 @@ export interface FileRoutesByFullPath {
   '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
   '/screens-jeddah': typeof ScreensJeddahRoute
   '/warehouses-jeddah': typeof WarehousesJeddahRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/car-shades-jeddah': typeof CarShadesJeddahRoute
   '/contact': typeof ContactRoute
   '/our-work': typeof OurWorkRoute
@@ -115,13 +135,16 @@ export interface FileRoutesByTo {
   '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
   '/screens-jeddah': typeof ScreensJeddahRoute
   '/warehouses-jeddah': typeof WarehousesJeddahRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/car-shades-jeddah': typeof CarShadesJeddahRoute
   '/contact': typeof ContactRoute
@@ -131,6 +154,7 @@ export interface FileRoutesById {
   '/sandwich-panel-jeddah': typeof SandwichPanelJeddahRoute
   '/screens-jeddah': typeof ScreensJeddahRoute
   '/warehouses-jeddah': typeof WarehousesJeddahRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -139,6 +163,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/blog'
     | '/car-shades-jeddah'
     | '/contact'
@@ -148,12 +173,14 @@ export interface FileRouteTypes {
     | '/sandwich-panel-jeddah'
     | '/screens-jeddah'
     | '/warehouses-jeddah'
+    | '/admin'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/car-shades-jeddah'
     | '/contact'
     | '/our-work'
@@ -162,12 +189,15 @@ export interface FileRouteTypes {
     | '/sandwich-panel-jeddah'
     | '/screens-jeddah'
     | '/warehouses-jeddah'
+    | '/admin'
     | '/blog/$slug'
     | '/blog'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/blog'
     | '/car-shades-jeddah'
     | '/contact'
@@ -177,13 +207,16 @@ export interface FileRouteTypes {
     | '/sandwich-panel-jeddah'
     | '/screens-jeddah'
     | '/warehouses-jeddah'
+    | '/_authenticated/admin'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRouteWithChildren
   CarShadesJeddahRoute: typeof CarShadesJeddahRoute
   ContactRoute: typeof ContactRoute
@@ -204,11 +237,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog': {
@@ -274,6 +321,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WarehousesJeddahRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/blog/': {
       id: '/blog/'
       path: '/'
@@ -291,6 +345,17 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 interface BlogRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -305,7 +370,9 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   BlogRoute: BlogRouteWithChildren,
   CarShadesJeddahRoute: CarShadesJeddahRoute,
   ContactRoute: ContactRoute,
