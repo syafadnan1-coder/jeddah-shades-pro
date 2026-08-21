@@ -59,7 +59,8 @@ export function ServicesGrid({ currentSlug }: { currentSlug?: string }) {
             </span>
           </div>
         </Link>
-      ))}
+        );
+      })}
     </div>
   );
 }
