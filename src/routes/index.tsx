@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { Award, Clock, HardHat, ShieldCheck, Star, Wrench } from "lucide-react";
-import { homeQuery } from "@/lib/queries";
+import { homeQuery, siteQuery } from "@/lib/queries";
 import { HERO_IMAGE, SERVICES_CONTENT } from "@/lib/content";
 import { SITE } from "@/lib/site";
 import { CTAButtons } from "@/components/site/CTAButtons";
@@ -57,13 +57,16 @@ const FEATURES = [
 
 function Home() {
   const { data } = useSuspenseQuery(homeQuery);
+  const { data: site } = useQuery(siteQuery);
 
   return (
     <>
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
-        <img
-          src={HERO_IMAGE}
+        <SmartImage
+          src={site?.settings?.hero_image_url ?? null}
+          fallback={HERO_IMAGE}
           alt="مظلات سيارات حديثة أمام فيلا في جدة"
+          eager
           width={1280}
           height={900}
           className="absolute inset-0 size-full object-cover opacity-25"

@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft } from "lucide-react";
 import { SERVICES_CONTENT } from "@/lib/content";
+import { siteQuery } from "@/lib/queries";
 import { JEDDAH_DISTRICTS } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { SmartImage } from "./SmartImage";
 
 export function SectionHeading({
   eyebrow,
@@ -28,31 +31,36 @@ export function SectionHeading({
 
 export function ServicesGrid({ currentSlug }: { currentSlug?: string }) {
   const items = SERVICES_CONTENT.filter((s) => s.slug !== currentSlug);
+  const { data: site } = useQuery(siteQuery);
+  const bySlug = new Map((site?.services ?? []).map((s) => [s.slug, s]));
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((s) => (
+      {items.map((s) => {
+        const db = bySlug.get(s.slug);
+        return (
         <Link
           key={s.slug}
           to={`/${s.slug}` as "/car-shades-jeddah"}
           className="card-soft group overflow-hidden transition hover:shadow-lift"
         >
-          <img
-            src={s.image}
-            alt={`${s.name} في جدة`}
-            loading="lazy"
+          <SmartImage
+            src={db?.featured_image ?? null}
+            fallback={s.image}
+            alt={`${db?.name ?? s.name} في جدة`}
             width={1280}
             height={900}
             className="h-52 w-full object-cover transition duration-500 group-hover:scale-105"
           />
           <div className="p-6">
-            <h3 className="text-lg font-bold text-foreground">{s.name}</h3>
-            <p className="mt-2 line-clamp-2 text-sm leading-7 text-muted-foreground">{s.intro[0]}</p>
+            <h3 className="text-lg font-bold text-foreground">{db?.name ?? s.name}</h3>
+            <p className="mt-2 line-clamp-2 text-sm leading-7 text-muted-foreground">{db?.short_description || s.intro[0]}</p>
             <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-primary">
               تفاصيل الخدمة <ChevronLeft className="size-4" aria-hidden />
             </span>
           </div>
         </Link>
-      ))}
+        );
+      })}
     </div>
   );
 }

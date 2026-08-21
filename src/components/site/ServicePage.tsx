@@ -29,9 +29,11 @@ export function ServicePage({ content }: { content: ServiceContent }) {
             <p className="mt-4 max-w-xl text-base leading-8 text-primary-foreground/80">{content.intro[0]}</p>
             <CTAButtons className="mt-7" message={waMsg} variant="onDark" />
           </div>
-          <img
-            src={content.image}
+          <SmartImage
+            src={data.service?.featured_image ?? null}
+            fallback={content.image}
             alt={`${content.h1} - ${content.name}`}
+            eager
             width={1280}
             height={900}
             className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift"
@@ -82,6 +84,15 @@ export function ServicePage({ content }: { content: ServiceContent }) {
                 <article key={t.id} className="card-soft p-6">
                   <Sparkles className="size-5 text-primary" aria-hidden />
                   <h3 className="mt-3 text-base font-bold">{t.name}</h3>
+                  {t.image_url && (
+                    <SmartImage
+                      src={t.image_url}
+                      alt={`${t.name} في جدة`}
+                      className="mt-3 h-40 w-full rounded-xl object-cover"
+                      width={800}
+                      height={600}
+                    />
+                  )}
                   {t.description && (
                     <p className="mt-2 text-sm leading-7 text-muted-foreground">{t.description}</p>
                   )}
