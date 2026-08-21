@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { Award, Clock, HardHat, ShieldCheck, Star, Wrench } from "lucide-react";
-import { homeQuery } from "@/lib/queries";
+import { homeQuery, siteQuery } from "@/lib/queries";
 import { HERO_IMAGE, SERVICES_CONTENT } from "@/lib/content";
 import { SITE } from "@/lib/site";
 import { CTAButtons } from "@/components/site/CTAButtons";
