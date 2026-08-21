@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft } from "lucide-react";
 import { SERVICES_CONTENT } from "@/lib/content";
+import { siteQuery } from "@/lib/queries";
 import { JEDDAH_DISTRICTS } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { SmartImage } from "./SmartImage";
 
 export function SectionHeading({
   eyebrow,
