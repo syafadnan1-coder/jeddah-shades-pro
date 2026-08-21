@@ -29,9 +29,11 @@ export function ServicePage({ content }: { content: ServiceContent }) {
             <p className="mt-4 max-w-xl text-base leading-8 text-primary-foreground/80">{content.intro[0]}</p>
             <CTAButtons className="mt-7" message={waMsg} variant="onDark" />
           </div>
-          <img
-            src={content.image}
+          <SmartImage
+            src={data.service?.featured_image ?? null}
+            fallback={content.image}
             alt={`${content.h1} - ${content.name}`}
+            eager
             width={1280}
             height={900}
             className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift"
