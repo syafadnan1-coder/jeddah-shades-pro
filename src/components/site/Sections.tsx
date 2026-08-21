@@ -44,7 +44,7 @@ export function ServicesGrid({ currentSlug }: { currentSlug?: string }) {
           className="card-soft group overflow-hidden transition hover:shadow-lift"
         >
           <SmartImage
-            src={db?.featured_image}
+            src={db?.featured_image ?? null}
             fallback={s.image}
             alt={`${db?.name ?? s.name} في جدة`}
             width={1280}
