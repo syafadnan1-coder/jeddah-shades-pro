@@ -84,6 +84,15 @@ export function ServicePage({ content }: { content: ServiceContent }) {
                 <article key={t.id} className="card-soft p-6">
                   <Sparkles className="size-5 text-primary" aria-hidden />
                   <h3 className="mt-3 text-base font-bold">{t.name}</h3>
+                  {t.image_url && (
+                    <SmartImage
+                      src={t.image_url}
+                      alt={`${t.name} في جدة`}
+                      className="mt-3 h-40 w-full rounded-xl object-cover"
+                      width={800}
+                      height={600}
+                    />
+                  )}
                   {t.description && (
                     <p className="mt-2 text-sm leading-7 text-muted-foreground">{t.description}</p>
                   )}
