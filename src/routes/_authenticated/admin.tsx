@@ -58,36 +58,39 @@ function AdminPage() {
   const serviceField: Field = { key: "service_id", label: "الخدمة", type: "select", options: services };
 
   return (
-    <section className="section-y">
+    <section className="py-8 md:section-y">
       <div className="container-site">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-extrabold">لوحة التحكم</h1>
-            <p className="mt-1 text-sm text-muted-foreground">{email}</p>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="min-w-0">
+            <h1 className="text-xl font-extrabold md:text-2xl">لوحة التحكم</h1>
+            <p className="mt-1 truncate text-xs text-muted-foreground md:text-sm">{email}</p>
           </div>
-          <button onClick={signOut} className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-bold">
+          <button onClick={signOut} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-bold md:px-4 md:text-sm">
             <LogOut className="size-4" aria-hidden /> تسجيل الخروج
           </button>
         </div>
 
         {isAdmin === false && (
-          <div className="mt-6 rounded-2xl border border-destructive/40 bg-destructive/5 p-5 text-sm">
+          <div className="mt-6 rounded-2xl border border-destructive/40 bg-destructive/5 p-4 text-sm md:p-5">
             حسابك ليس لديه صلاحية مدير بعد. يجب منح دور <strong>admin</strong> لهذا الحساب من قاعدة البيانات
             لتتمكن من التعديل. يمكنك التصفح لكن عمليات الحفظ سترفض.
           </div>
         )}
 
-        <div className="mt-8 flex flex-wrap gap-2">
-          {TABS.map((t) => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`rounded-full px-4 py-2 text-sm font-bold transition ${tab === t ? "bg-primary text-primary-foreground" : "border border-border bg-card text-muted-foreground"}`}
-            >
-              {t}
-            </button>
-          ))}
+        <div className="-mx-5 mt-6 overflow-x-auto px-5 md:mx-0 md:mt-8 md:px-0">
+          <div className="flex w-max gap-2 md:w-auto md:flex-wrap">
+            {TABS.map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`shrink-0 whitespace-nowrap rounded-full px-3.5 py-2 text-xs font-bold transition md:px-4 md:text-sm ${tab === t ? "bg-primary text-primary-foreground" : "border border-border bg-card text-muted-foreground"}`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
         </div>
+
 
         <div className="mt-8">
           {tab === "الخدمات" && (
